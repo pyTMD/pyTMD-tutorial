@@ -7997,7 +7997,7 @@ packages:
 - pypi: ./
   name: pytmd-tutorial
   version: 0.0.1
-  sha256: d10c6e69c839edf9d49b9d544dab984b09deb86204642640d33004be55884c9a
+  sha256: e9170606b9a31f4d2345f7860af7c02702e2c14500880c634fd81ffba5ed6777
   requires_dist:
   - cartopy
   - cftime
