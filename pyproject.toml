@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyTMD-tutorial"
 version = "0.0.1"
-description = "Project and User Contributions for Demonstrating pyTMD"
+description = "Project and User Contributions for Demonstrating pyTMD capabilities"
 keywords = [
     "Ocean Tides",
     "Load Tides",
