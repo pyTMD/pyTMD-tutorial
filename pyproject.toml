@@ -1,0 +1,139 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyTMD-tutorial"
+version = "0.0.1"
+description = "Project and User Contributions for Demonstrating pyTMD"
+keywords = [
+    "Ocean Tides",
+    "Load Tides",
+    "Pole Tides",
+    "Solid Earth Tides",
+    "Tidal Prediction",
+]
+authors = [
+    {name = "Tyler Sutterley"},
+    {email = "tsutterl@uw.edu"}
+]
+maintainers = [
+    {name = "pyTMD contributors"}
+]
+license-files = ["LICENSE"]
+readme = {file = "README.md", content-type = "text/markdown"}
+
+requires-python = "~=3.9"
+dependencies = [
+    "cartopy",
+    "cftime",
+    "h5netcdf",
+    "ipyleaflet",
+    "ipympl",
+    "ipywidgets",
+    "jplephem",
+    "jupyterlab",
+    "matplotlib",
+    "notebook",
+    "pandas",
+    "pyarrow",
+    "pyTMD>=3",
+    "xarray",
+]
+
+classifiers=[
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Oceanography",
+]
+
+[project.urls]
+Homepage = "https://pytmd.readthedocs.io"
+Documentation = "https://pytmd.readthedocs.io"
+Repository = "https://github.com/pyTMD/pyTMD-tutorial"
+Issues = "https://github.com/pyTMD/pyTMD-tutorial/issues"
+
+[tool.setuptools.packages.find]
+exclude = ["*/",]
+
+[tool.ruff]
+line-length = 80
+indent-width = 4
+exclude = [
+    ".git",
+    ".pixi",
+    "build",
+    "run",
+    "test",
+]
+
+[tool.ruff.lint]
+select = [
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # ruff-specific
+    "RUF",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = false
+
+[tool.pixi.workspace]
+name = "pytmd-tutorial"
+authors = ["pyTMD contributors"]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64", "win-64"]
+
+[tool.pixi.pypi-dependencies]
+pyTMD-tutorial = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+
+[tool.pixi.tasks.start]
+cmd = "jupyter lab"
+description = "Start JupyterLab in base directory"
+
+[tool.pixi.tasks.export-env]
+args = [ { "arg" = "flags", "default" = "" } ]
+cmd = "pixi workspace export conda-environment {{ flags }} > environment.yml"
+description = "Export workspace to a conda environment file" 
+
+[tool.pixi.dependencies]
+cartopy = "*"
+cftime = "*"
+h5netcdf = "*"
+ipyleaflet = "*"
+ipympl = "*"
+ipywidgets = "*"
+jplephem = "*"
+jupyterlab = "*"
+matplotlib-base = "*"
+notebook = "*"
+pandas = "*"
+pyarrow = "*"
+pyTMD = ">=3"
+xarray = "*"
